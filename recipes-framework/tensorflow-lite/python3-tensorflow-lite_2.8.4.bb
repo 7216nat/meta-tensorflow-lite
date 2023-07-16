@@ -9,7 +9,7 @@ DPV = "${@'.'.join(d.getVar('PV').split('.')[0:3])}"
 SRCREV_tensorflow = "1b8f5c396f0c016ebe81fe1af029e6f205c926a4"
 
 SRC_URI = " \
-    git://github.com/tensorflow/tensorflow.git;name=tensorflow;branch=r${BPV};protocol=https \
+    git://github.com/tensorflow/tensorflow.git;name=tensorflow;branch=r2.8;protocol=https \
     file://001-v2.8-Disable-XNNPACKPack-CMakeFile.patch \
     file://001-v2.8-Add-CMAKE_SYSTEM_PROCESSOR.patch \
 "
@@ -22,11 +22,21 @@ DEPENDS += "\
             python3-wheel-native \
             python3-numpy \
             python3-pybind11 \
+            libgfortran \
+            flatbuffers-native \
+            vim-native \
+            flatbuffers \
+            abseil-cpp \
+            abseil-cpp-native \
+            libusb1 \
 "
 
 RDEPENDS:${PN} += " \
     python3 \
     python3-numpy \
+    flatbuffers \
+    abseil-cpp \
+    libusb1 \
 "
 
 inherit setuptools3 cmake
@@ -72,6 +82,17 @@ EXTRA_OECMAKE:append:raspberrypi4-64 = " -DTFLITE_ENABLE_XNNPACK=ON"
 # Therefore, turn off FETCHCONTENT_FULLY_DISCONNECTED.
 EXTRA_OECMAKE:append = " -DFETCHCONTENT_FULLY_DISCONNECTED=OFF -DTENSORFLOW_TARGET_ARCH=${TENSORFLOW_TARGET_ARCH}"
 
+EXTRA_OECMAKE:append = " -DFETCHCONTENT_FULLY_DISCONNECTED=OFF -DTENSORFLOW_TARGET_ARCH=${TENSORFLOW_TARGET_ARCH}"
+
+
+LIBS_DIR = "${WORKDIR}/recipe-sysroot-native/usr/lib"
+EXTRA_OECMAKE:append = " -DTFLITE_ENABLE_INSTALL=ON \
+                        -DCMAKE_FIND_PACKAGE_PREFER_CONFIG=ON \
+                        -DSYSTEM_FARMHASH=ON \
+                        -Dabsl_DIR=${LIBS_DIR} \
+                        -DFlatBuffers_DIR=${LIBS_DIR} \
+                    "
+
 do_configure[network] = "1"
 
 do_compile:prepend() {
@@ -90,7 +111,7 @@ do_compile:prepend() {
        "${TENSORFLOW_LITE_DIR}/python/metrics/metrics_portable.py" \
        "${TENSORFLOW_LITE_BUILD_DIR}/tflite_runtime"
     echo "__version__ = '${PACKAGE_VERSION}'" >> "${TENSORFLOW_LITE_BUILD_DIR}/tflite_runtime/__init__.py"
-    echo "__git_version__ = '$(git -C "${S}" describe)'" >> "${TENSORFLOW_LITE_BUILD_DIR}/tflite_runtime/__init__.py"
+    echo "__git_version__ = '${SRCREV_tensorflow}'" >> "${TENSORFLOW_LITE_BUILD_DIR}/tflite_runtime/__init__.py"
 }
 
 do_compile:append() {
@@ -137,10 +158,11 @@ do_install() {
     PYTHONPATH=${D}${PYTHON_SITEPACKAGES_DIR} \
     ${STAGING_BINDIR_NATIVE}/${PYTHON_PN}-native/${PYTHON_PN} -m pip install --disable-pip-version-check -v \
     -t ${D}/${PYTHON_SITEPACKAGES_DIR} --no-cache-dir --no-deps \
-    ${S}/tensorflow/lite/tools/pip_package/gen/tflite_pip/python3/dist/tflite_runtime-${DPV}-*.whl
+    ${S}/tensorflow/lite/tools/pip_package/gen/tflite_pip/python3/dist/tflite_runtime-${DPV}*.whl
 }
 
 FILES:${PN}-dev = ""
 INSANE_SKIP:${PN} += "dev-so \
+                     already-stripped \
                      "
 FILES:${PN} += "${libdir}/* ${datadir}/*"
