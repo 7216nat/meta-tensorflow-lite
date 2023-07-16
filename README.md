@@ -1,5 +1,7 @@
 # meta-tensorflow-lite
 
+### Forked from [NobuoTsukamoto's repository]([recipes-framework/tensorflow-lite/python3-tensorflow-lite_2.8.0.bb](https://github.com/NobuoTsukamoto/meta-tensorflow-lite))
+
 Yocto layer for the TensorFlow Lite interpreter with Python / C++.
 
 ## The official website is:
@@ -11,12 +13,6 @@ Yocto layer for the TensorFlow Lite interpreter with Python / C++.
 - [Building TensorFlow Lite Standalone Pip](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/lite/tools/pip_package)
 - [Build TensorFlow Lite with CMake](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/lite/g3doc/guide/build_cmake.md)
 
-## Available BSP
-Please note that it is not official support.
-| BSP                                                              | Build status                                                                                                   |
-| :--------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------- |
-| [meta-raspberrypi](https://github.com/agherzan/meta-raspberrypi) | [![Bitbake raspberrypi](https://github.com/NobuoTsukamoto/meta-tensorflow-lite/actions/workflows/build_rpi.yml/badge.svg?branch=main)](https://github.com/NobuoTsukamoto/meta-tensorflow-lite/actions/workflows/build_rpi.yml) |
-| [meta-riscv](https://github.com/riscv/meta-riscv)                | [![Bitbake qemuriscv](https://github.com/NobuoTsukamoto/meta-tensorflow-lite/actions/workflows/build_riscv.yml/badge.svg?branch=main)](https://github.com/NobuoTsukamoto/meta-tensorflow-lite/actions/workflows/build_riscv.yml) |
 
 ## Available recipes
 - framework
