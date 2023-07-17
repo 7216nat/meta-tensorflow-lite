@@ -76,6 +76,9 @@ EXTRA_OECMAKE:append:raspberrypi3-64 = " -DTFLITE_ENABLE_XNNPACK=ON"
 TENSORFLOW_TARGET_ARCH:raspberrypi4-64 = "aarch64"
 TUNE_CCARGS:raspberrypi4-64 = ""
 EXTRA_OECMAKE:append:raspberrypi4-64 = " -DTFLITE_ENABLE_XNNPACK=ON"
+TENSORFLOW_TARGET_ARCH:seeed-reterminal = "aarch64"
+TUNE_CCARGS:seeed-reterminal = ""
+EXTRA_OECMAKE:append:seeed-reterminal = " -DTFLITE_ENABLE_XNNPACK=ON"
 
 # Note:
 # Download the submodule using FetchContent_Populate.

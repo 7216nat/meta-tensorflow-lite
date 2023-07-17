@@ -56,28 +56,3 @@ IMAGE_INSTALL:append = " python3-tensorflow-lite libtensorflow-lite"
 $ bitbake core-image-weston
 ```
 
-### Quick start for the qemuriscv64
-```
-# Clone repositories and oe-init-build-env
-$ git clone https://github.com/openembedded/bitbake.git
-$ git clone https://github.com/openembedded/openembedded-core.git
-$ git clone https://github.com/openembedded/meta-openembedded.git
-$ git clone https://github.com/riscv/meta-riscv.git
-$ git clone https://github.com/NobuoTsukamoto/meta-tensorflow-lite.git
-$ source openembedded-core/oe-init-build-env build
-
-# Add layer
-$ bitbake-layers add-layer ../meta-openembedded/meta-oe/
-$ bitbake-layers add-layer ../meta-openembedded/meta-python/
-$ bitbake-layers add-layer ../meta-openembedded/meta-networking/
-$ bitbake-layers add-layer ../meta-openembedded/meta-multimedia/
-$ bitbake-layers add-layer ../meta-riscv/
-$ bitbake-layers add-layer ../meta-tensorflow-lite/
-
-# Add the package to 'conf/auto.conf' file. 
-MACHINE ?= "qemuriscv64"
-IMAGE_INSTALL:append = " python3-tensorflow-lite  libtensorflow-lite"
-
-# Build
-$ bitbake core-image-full-cmdline
-```
