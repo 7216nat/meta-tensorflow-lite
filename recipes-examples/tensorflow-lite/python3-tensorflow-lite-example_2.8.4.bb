@@ -53,6 +53,7 @@ RDEPENDS:${PN} += " \
     python3-matplotlib \
     python3-skimage \
     python3-packaging \
+    python3-pycoral \
     gstreamer1.0-plugins-base \
     gstreamer1.0-plugins-good \
     gstreamer1.0-plugins-bad \
