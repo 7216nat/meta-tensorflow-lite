@@ -20,7 +20,7 @@ SRC_URI = " \
     git://github.com/tensorflow/tensorflow.git;name=tensorflow;branch=r2.8;protocol=https \
     git://github.com/abewley/sort.git;name=sort;branch=master;protocol=https;destsuffix=sort/ \
     git://github.com/google-coral/example-object-tracker.git;name=example-object-tracker;branch=master;protocol=https;destsuffix=example-object-tracker/ \
-    git://github.com/google-coral/project-keyword-spotter.git;name=keyword-spotter;branche=master;protocol=https;destsuffix=keyword-spotter/ \
+    git://github.com/google-coral/project-keyword-spotter.git;name=keyword-spotter;branch=master;protocol=https;destsuffix=keyword-spotter/ \
     https://storage.googleapis.com/download.tensorflow.org/models/mobilenet_v1_2018_02_22/mobilenet_v1_1.0_224.tgz;name=model \
     https://dl.google.com/coral/canned_models/mobilenet_ssd_v2_coco_quant_postprocess_edgetpu.tflite;name=model2 \
     https://storage.googleapis.com/download.tensorflow.org/models/mobilenet_v1_1.0_224_frozen.tgz;name=label \
