@@ -41,6 +41,7 @@ KEWORD_SPOTTER_DEPS = " \
     subversion \
     ffmpeg \
     freetype \
+    python3-pyaudio \
 "
 RDEPENDS:${PN} += " \
     python3-tensorflow-lite\
