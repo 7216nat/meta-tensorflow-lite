@@ -33,7 +33,6 @@ DEPENDS = " \
 "
 INSANE_SKIP_${PN} = "file-rdeps"
 
-PREFERRED_VERSION_python3-pyaudio = "0.2.13"
 KEWORD_SPOTTER_DEPS = " \
     libsdl \
     libsdl-image \
