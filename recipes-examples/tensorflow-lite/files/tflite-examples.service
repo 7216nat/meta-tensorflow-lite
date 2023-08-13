@@ -3,8 +3,8 @@ Requires=flutter-homescreen.service
 After=flutter-homescreen.service
 
 [Service]
-ExecStart=/usr/bin/tflite-examples-init.py
+ExecStart=/usr/sbin/tflite-examples-init.py
 Restart=on-failure
 
 [Install]
-WantedBy=agl-session.target
+WantedBy=multi-user.target
