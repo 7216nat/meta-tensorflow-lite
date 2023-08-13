@@ -3,7 +3,7 @@ Requires=flutter-homescreen.service
 After=flutter-homescreen.service
 
 [Service]
-ExecStart=/usr/bin/tflite_examples_init.py
+ExecStart=/usr/bin/tflite-examples-init.py
 Restart=on-failure
 
 [Install]
