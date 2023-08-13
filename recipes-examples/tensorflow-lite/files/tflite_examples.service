@@ -1,0 +1,10 @@
+[Unit]
+Requires=flutter-homescreen.service
+After=flutter-homescreen.service
+
+[Service]
+ExecStart=/usr/bin/tflite_examples_init.py
+Restart=on-failure
+
+[Install]
+WantedBy=agl-session.target
