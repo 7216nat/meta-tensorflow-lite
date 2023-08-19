@@ -6,7 +6,7 @@ SRCREV_tensorflow = "1b8f5c396f0c016ebe81fe1af029e6f205c926a4"
 SRCREV_sort = "da0fe4d20ff3ca1c7bad3f746fa79e3c97421bf2"
 SRCREV_example-object-tracker = "df20497f328ee48578e766e817a41b1e4f18a376"
 SRCREV_keyword-spotter = "43a5fd0578c75c9140b4f057de74f2dbac96ceff"
-SRCREV_ADAS-apps = "0c0de294f0c31cf40622366aa6efd1b0db6ef83c"
+SRCREV_ADAS-apps = "f65354ad69be772de009b71c08b28d3d67ed4858"
 
 SRC_URI[model.sha256sum] = "1ccb74dbd9c5f7aea879120614e91617db9534bdfaa53dfea54b7c14162e126b"
 SRC_URI[label.sha256sum] = "366a2d53008df0d2a82b375e2020bbc57e43bbe19971370e47b7f74ea0aaab91"
